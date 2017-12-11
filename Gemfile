@@ -43,7 +43,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-
+group :production do
+	gem 'pg'
+end
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
