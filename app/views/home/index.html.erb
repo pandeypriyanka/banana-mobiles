@@ -1,0 +1,145 @@
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-default btn-lg" id="myBtn">Register</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), remote: true) do |f| %>
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 style="color:#3071a9;"><span class="glyphicon glyphicon-lock"></span> Register</h4>
+        </div>
+        <div class="modal-body">
+			    <%= devise_error_messages! %>
+
+			    <div class="form-group">
+			      <%= f.label :name %>
+			      <%= f.text_field :name, class: 'form-control' %>
+			    </div>
+
+			    <div class="form-group">
+			      <%= f.label :email %>
+			      <%= f.email_field :email, class: 'form-control' %>
+			      <label id="email_already_exist" class="error"></label>
+			    </div>
+
+
+				<%= f.fields_for :user_address do |address|%>
+				    <div class="form-group">
+				      <%= address.label :address_line1 %>
+				      <%= address.text_field :address_line1, class: 'form-control' %>
+			    	</div>
+				    <div class="form-group">
+				      <%= address.label :address_line2 %>
+				      <%= address.text_field :address_line2, class: 'form-control' %>
+			    	</div>
+				    <div class="form-group">
+				      <%= address.label :phone %>
+				      <%= address.number_field :phone, class: 'form-control' %>
+				    </div>				    	
+				    <div class="form-group">
+				      <%= address.label :city %>
+				      <%= address.text_field :city, class: 'form-control' %>
+			    	</div>
+				    <div class="form-group">
+				      <%= address.label :state %>
+				      <%= address.text_field :state, class: 'form-control' %>
+			    	</div>				    	
+				    <div class="form-group">
+				      <%= address.label :postal_code %>
+				      <%= address.text_field :postal_code, class: 'form-control' %>
+				    </div>			    			    				    				    	
+                <%end%>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+	      <%= f.submit "Sign up", class: 'btn btn-primary' %>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div> 
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="userSuccessModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+
+        </div>
+        <div class="modal-body" id=sucessMessage>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> OK</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
+
+<%= javascript_tag do %>
+ 	$(document).ready(function () {
+
+		$("#new_user").validate({
+			debug: true,
+			rules: {
+			"user[email]": {required: true, email: true},
+			"user[name]": {required: true, minlength: 6},
+			"user[user_address][address_line1]": {required: true},
+			"user[user_address][phone]":  {required: true, minlength:10},
+			"user[user_address][city]":  {required: true},
+			"user[user_address][state]":  {required: true},
+			"user[user_address][postal_code]":  {required: true},
+
+			}
+		});
+
+		$("#user_email").on('change keyup paste',function(){
+		     
+		    $.post('/checkemail?email='+$("#user_email").val(),function(data){
+               if (data.email_exists){
+                	$('#email_already_exist').html('This email is already registered with us.')
+               	return false;
+               }else{
+ 					$('#email_already_exist').html('')               
+               	return true;
+               }
+
+		    });
+		});
+
+
+
+	});
+
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

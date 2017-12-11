@@ -1,0 +1,27 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.banner{
+  background-image:image-url("/assets/banner.jpg");
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-position: center;
+  height:500px;
+}
+
+.iq-home-sec-background{
+  background-image:image-url("/assets/bg.jpg");
+}
+
+.alert-alert {
+  color:red;
+}
+
+.alert-notice {
+  color:green;
+}
+
+.error {
+ color:red;
+}
