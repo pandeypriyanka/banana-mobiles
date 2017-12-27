@@ -12,7 +12,10 @@
 	        </div>
 	      </div>
 	      <div class="link">
-	        <h1 class="iq-font-white" data-animation="animated fadeInLeft">Grab your first Banana Mobile Register Online Here</h1>
+		<%= link_to new_user_registration_path, remote:true, class: ''  do %>
+	          <h1 class="iq-font-white" data-animation="animated fadeInLeft">Grab your first Banana Mobile Register Online Here</h1>
+		<%end%>
+
 	        <ul class="list-inline" data-animation="animated fadeInUp">
  				<li>
 					<%= link_to new_user_registration_path, remote:true, class: ''  do %>
