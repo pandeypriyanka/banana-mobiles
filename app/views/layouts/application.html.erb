@@ -92,7 +92,7 @@
                   <label for="email">Subscribe Our Newsletter</label>
                   <input type="email" class="form-control" placeholder="Enter Your Email" id="email">
                 </div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSiNZkB43yw3fvC2Amzf7taw3oVzz7ruVy1UcTfet0I3VEPA/viewform?usp=sf_link" class="button bt-white re-mt-30">Subscribe Now</a>
+                <%= link_to 'Subscribe Now', new_user_registration_path, remote:true, class: '' %>
               </form>
             </div>
           </div>
