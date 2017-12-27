@@ -113,8 +113,9 @@
 	        <h4 class="iq-tw-6">Register <span class="iq-font-blue">.</span></h4>
 	        <div class="info-03">
 	                    <span data-depth="0.8" class="layer iq-mobile-icon icon-03" data-bottom="transform:translateX(-50px)" data-top="transform:translateX(40px);">
-	                        <%=image_tag("sm3.png", width: "330px", height: "150px", alt: "#" )%>
-
+	                        <%= link_to new_user_registration_path, remote:true, class: ''  do %>
+				    <%=image_tag("sm3.png", width: "330px", height: "150px", alt: "#" )%>
+                                <%end%>
 	                    </span>
 	          <p> Register to Buy.</p>
 	        </div>
